@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { Mdx } from "src/app/components/mdx";
 import { allBlogs } from "contentlayer/generated";
 import Balancer from "react-wrap-balancer";
+import ViewCounter from "@/app/components/viewCounter";
+import { getAllViews } from "@/app/actions";
 
 export async function generateMetadata({
   params,
@@ -83,20 +85,23 @@ export default async function Blog({ params }) {
     notFound();
   }
 
+  const allViews = await getAllViews();
+
   return (
     <section>
       <script type="application/ld+json" suppressHydrationWarning>
         {JSON.stringify(post.structuredData)}
       </script>
-      <h1 className="font-bold text-2xl tracking-tighter max-w-[650px]">
+      <h1 className="font-bold text-2xl">
         <Balancer>{post.title}</Balancer>
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
+      <div className="flex flex-row space-x-4 items-center mt-2 mb-8 text-sm max-w-[650px]">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.publishedAt)}
         </p>
+        <ViewCounter allViews={allViews} slug={post.slug} trackView />
       </div>
-      <Mdx code={post.body.code} tweets={{}} />
+      <Mdx code={post.body.code} />
     </section>
   );
 }

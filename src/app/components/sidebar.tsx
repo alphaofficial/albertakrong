@@ -12,9 +12,6 @@ const navItems = {
   "/blog": {
     name: "BLOG",
   },
-  // "/guestbook": {
-  //   name: "GUESTBOOK",
-  // },
 };
 
 export default function Navbar() {
@@ -24,7 +21,7 @@ export default function Navbar() {
   }
 
   return (
-    <aside className="-ml-[8px] mb-16">
+    <aside className="-ml-[8px] mb-8">
       <div className="lg:sticky lg:top-20">
         <LayoutGroup>
           <nav

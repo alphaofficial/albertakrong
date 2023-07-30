@@ -98,10 +98,9 @@ const components = {
 
 interface MdxProps {
   code: string;
-  tweets: Record<string, any>;
 }
 
-export function Mdx({ code, tweets }: MdxProps) {
+export function Mdx({ code }: MdxProps) {
   const Component = useMDXComponent(code);
 
   return (
