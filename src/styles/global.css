@@ -132,3 +132,17 @@ table {
 [data-rehype-pretty-code-title] + pre {
   @apply mt-0 rounded-t-none border-t-0;
 }
+
+div .blinking-cursor {
+  -webkit-animation: blinking-cursor 1s none infinite;
+  -moz-animation: blinking-cursor 1s none infinite;
+  -ms-animation: blinking-cursor 1s none infinite;
+  -o-animation: blinking-cursor 1s none infinite;
+  animation: blinking-cursor 1s none infinite;
+}
+
+@keyframes blinking-cursor {
+  50% {
+    opacity: 0;
+  }
+}

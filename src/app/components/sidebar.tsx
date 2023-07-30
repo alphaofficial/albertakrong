@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { LayoutGroup, motion } from "framer-motion";
+import { BiChevronRight } from "react-icons/bi";
 
 const navItems = {
   "/": {
@@ -21,14 +22,26 @@ export default function Navbar() {
   }
 
   return (
-    <aside className="-ml-[8px] mb-8">
+    <aside className="-ml-[16px] mb-8">
       <div className="lg:sticky lg:top-20">
         <LayoutGroup>
           <nav
-            className="flex flex-row items-start relative px-0 pb-0 md:overflow-auto scroll-pr-6 md:relative"
+            className="flex flex-row justify-between items-center relative px-0 pb-0 md:overflow-auto scroll-pr-6 md:relative"
             id="nav"
           >
-            <div className="flex flex-row space-x-0 pr-10">
+            <div className="p-4 font-bold text-gray-600 text-xl">
+              <Link href="/">
+                <div className="flex flex-row items-center">
+                  <span className="font-mono">$</span>
+                  <span>{`albert`}</span>
+                  <span>
+                    <BiChevronRight size={30} />
+                  </span>
+                  <span className="blinking-cursor">_</span>
+                </div>
+              </Link>
+            </div>
+            <div className="flex flex-row items-center space-x-0 pr-10">
               {Object.entries(navItems).map(([path, { name }]) => {
                 const isActive = path === pathname;
                 return (
