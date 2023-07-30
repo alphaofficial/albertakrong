@@ -5,6 +5,7 @@ import { allBlogs } from "contentlayer/generated";
 import Balancer from "react-wrap-balancer";
 import ViewCounter from "@/app/components/viewCounter";
 import { getAllViews } from "@/app/actions";
+import { Comment } from "@/app/components/comments";
 
 export async function generateMetadata({
   params,
@@ -102,6 +103,9 @@ export default async function Blog({ params }) {
         <ViewCounter allViews={allViews} slug={post.slug} trackView />
       </div>
       <Mdx code={post.body.code} />
+      <div className="mt-16">
+        <Comment />
+      </div>
     </section>
   );
 }
